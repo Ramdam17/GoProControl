@@ -1,78 +1,78 @@
 # GoPro USB Control
 
-Contrôle de caméras GoPro via USB en Python.
+Control GoPro cameras via USB in Python.
 
 ## Installation
 
 ```bash
-# Avec Poetry
+# With Poetry
 poetry install
 
-# Ou avec pip
+# Or with pip
 pip install -e .
 ```
 
-## Utilisation
+## Usage
 
-### Exemple rapide
+### Quick Example
 
 ```python
 from gopro_usb import GoProUSB
 
-# Initialisez avec le numéro de série de votre GoPro
+# Initialize with your GoPro serial number
 gopro = GoProUSB("C1234567890")
 
-# Allumez la caméra
+# Power on the camera
 gopro.power_on()
 
-# Configurez les paramètres
+# Configure settings
 gopro.mode_video()
 gopro.set_resolution_5_3k()
 gopro.set_fps_240()
 gopro.set_lens_linear()
 
-# Enregistrez
+# Record
 gopro.record_start()
-time.sleep(10)  # Enregistrez pendant 10 secondes
+time.sleep(10)  # Record for 10 seconds
 gopro.record_stop()
 
-# Éteignez
+# Power off
 gopro.power_off()
 ```
 
-### Exemple complet
+### Complete Example
 
-Voir `example_usage.py` pour une démonstration complète incluant :
+See `example_usage.py` for a complete demonstration including:
 - Power on / Power off
-- Configuration (résolution 5.3K, FPS 240, Lens Linear)
-- Démarrage/arrêt d'enregistrement
-- Monitoring du statut en temps réel
+- Configuration (5.3K resolution, 240 FPS, Linear Lens)
+- Start/stop recording
+- Real-time status monitoring
 
 ```bash
-# Exécution de l'exemple
+# Run the example
 poetry run python example_usage.py
 
-# Ou activez l'environnement virtuel
+# Or activate the virtual environment
 poetry shell
 python example_usage.py
 ```
 
-## Fonctionnalités principales
+## Main Features
 
-### Contrôle de base
-- `power_on()` - Allumer la caméra
-- `power_off()` - Éteindre la caméra
-- `record_start()` - Démarrer l'enregistrement
-- `record_stop()` - Arrêter l'enregistrement
+### Basic Control
+- `power_on()` - Power on the camera
+- `power_off()` - Power off the camera
+- `record_start()` - Start recording
+- `record_stop()` - Stop recording
 
-### Configuration vidéo
-- `set_resolution_5_3k()` - Résolution 5.3K
-- `set_resolution_5k()` - Résolution 5K
-- `set_resolution_4k()` - Résolution 4K
-- `set_resolution_2_7k()` - Résolution 2.7K
-- `set_resolution_1080()` - Résolution 1080p
+### Video Configuration
+- `set_resolution_5_3k()` - 5.3K resolution
+- `set_resolution_5k()` - 5K resolution
+- `set_resolution_4k()` - 4K resolution
+- `set_resolution_2_7k()` - 2.7K resolution
+- `set_resolution_1080()` - 1080p resolution
 
-### Configuration FPS
+### FPS Configuration
 - `set_fps_240()` - 240 FPS
 - `set_fps_200()` - 200 FPS
 - `set_fps_120()` - 120 FPS
@@ -80,53 +80,53 @@ python example_usage.py
 - `set_fps_30()` - 30 FPS
 - `set_fps_24()` - 24 FPS
 
-### Configuration objectif
-- `set_lens_linear()` - Linear (recommandé pour moins de distorsion)
+### Lens Configuration
+- `set_lens_linear()` - Linear (recommended for less distortion)
 - `set_lens_wide()` - Wide
 - `set_lens_narrow()` - Narrow
 - `set_lens_superview()` - SuperView
 - `set_lens_max_superview()` - Max SuperView
 - `set_lens_linear_horizon()` - Linear + Horizon Lock
 
-### Statut
-- `get_state()` - Récupérer l'état complet
-- `get_status_realtime(interval, duration)` - Monitoring en temps réel
-- `is_busy()` - Vérifier si la caméra est occupée
-- `is_encoding()` - Vérifier si un encodage est en cours
+### Status
+- `get_state()` - Get complete state
+- `get_status_realtime(interval, duration)` - Real-time monitoring
+- `is_busy()` - Check if camera is busy
+- `is_encoding()` - Check if encoding is in progress
 
 ### Modes
-- `mode_video()` - Mode vidéo
-- `mode_photo()` - Mode photo
-- `mode_timelapse()` - Mode timelapse
+- `mode_video()` - Video mode
+- `mode_photo()` - Photo mode
+- `mode_timelapse()` - Timelapse mode
 
-### Médias
-- `get_media_list()` - Liste des fichiers sur la carte SD
-- `download_last_media(filename)` - Télécharger le dernier fichier
+### Media
+- `get_media_list()` - List files on SD card
+- `download_last_media(filename)` - Download last file
 
-## Configuration réseau
+## Network Configuration
 
-La classe utilise l'adresse IP de la GoPro basée sur son numéro de série :
-- Format IP : `172.2{digit3}.1{digit2-3}.51`
-- Exemple : SN "C1234567890" → IP `172.29.190.51`
+The class uses the GoPro's IP address based on its serial number:
+- IP Format: `172.2{digit3}.1{digit2-3}.51`
+- Example: SN "C1234567890" → IP `172.29.190.51`
 
-Assurez-vous que :
-1. La GoPro est connectée en USB
-2. Le contrôle USB est activé sur la caméra
-3. Votre ordinateur peut communiquer avec l'IP de la GoPro
+Make sure that:
+1. The GoPro is connected via USB
+2. USB control is enabled on the camera
+3. Your computer can communicate with the GoPro's IP
 
-## Crédits
+## Credits
 
-Basé sur le projet [goproUSB](https://github.com/drukasz/goproUSB) par Lukasz J. Nowak.
+Based on [goproUSB](https://github.com/drukasz/goproUSB) by Lukasz J. Nowak.
 
-Modifications et ajouts :
-- Refactorisation complète en classe Python
-- Support OpenCV pour preview local
-- Configuration pour GoPro Hero 12 Black
-- Ajout du monitoring en temps réel
-- Support du téléchargement de médias
+Modifications and additions:
+- Complete refactoring into Python class
+- OpenCV support for local preview
+- Configuration for GoPro Hero 12 Black
+- Real-time monitoring support
+- Media download support
 
 ## License
 
-Ce projet est sous licence **GNU General Public License v3.0** - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+This project is licensed under the **GNU General Public License v3.0** - see the [LICENSE](LICENSE) file for details.
 
-Comme dérivé de [goproUSB](https://github.com/drukasz/goproUSB), ce projet respecte les termes de la GPL v3.0 qui requiert que toute modification ou travail dérivé soit également distribué sous GPL v3.0.
+As a derivative of [goproUSB](https://github.com/drukasz/goproUSB), this project complies with the GPL v3.0 terms which require that any modification or derivative work must also be distributed under GPL v3.0.

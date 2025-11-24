@@ -1,6 +1,6 @@
 """
-Exemple d'utilisation de la classe GoProUSB
-Démontre le contrôle complet d'une GoPro via USB
+GoProUSB Class Usage Example
+Demonstrates complete control of a GoPro via USB
 """
 
 from gopro_usb import GoProUSB
@@ -13,14 +13,14 @@ SN = SN3
 
 
 def main():
-    # Remplacez par le numéro de série de votre GoPro
-    # Les 3 derniers chiffres sont utilisés pour générer l'IP
-    # Exemple: si SN = "C1234567890", utilisera 172.29.190.51
+    # Replace with your GoPro serial number
+    # The last 3 digits are used to generate the IP
+    # Example: if SN = "C1234567890", will use 172.29.190.51
 
     SERIAL_NUMBER = SN
     
     print("="*60)
-    print("🎥 Démonstration de contrôle GoPro via USB")
+    print("🎥 GoPro USB Control Demo")
     print("="*60)
     
     # Initialisation de la caméra
@@ -28,10 +28,10 @@ def main():
     
     try:
         # 1. POWER ON
-        print("\n📍 Étape 1: Allumage de la caméra")
+        print("\n📍 Step 1: Powering on the camera")
         print("-" * 60)
         if not gopro.power_on():
-            print("⚠️  Assurez-vous que la GoPro est connectée en USB")
+            print("⚠️  Make sure the GoPro is connected via USB")
             return
         time.sleep(2)
         
@@ -77,39 +77,39 @@ def main():
         
         print("✅ Configuration complete")
         
-        # 3. Vérification du statut
-        print("\n📍 Étape 3: Vérification du statut")
+        # 3. Status verification
+        print("\n📍 Step 3: Status verification")
         print("-" * 60)
         state = gopro.get_state()
-        print(f"🔋 Batterie: {state['status'].get('70', 'N/A')}%")
-        print(f"💾 Espace libre: {state['status'].get('54', 'N/A')} MB")
-        print(f"📊 Résolution: {gopro._get_resolution_name(state['settings'].get('2', 'N/A'))}")
+        print(f"🔋 Battery: {state['status'].get('70', 'N/A')}%")
+        print(f"💾 Free space: {state['status'].get('54', 'N/A')} MB")
+        print(f"📊 Resolution: {gopro._get_resolution_name(state['settings'].get('2', 'N/A'))}")
         print(f"🎬 FPS: {gopro._get_fps_name(state['settings'].get('3', 'N/A'))}")
         print(f"🔍 Lens: {gopro._get_lens_name(state['settings'].get('121', 'N/A'))}")
         
-        # 4. Démarrage de l'enregistrement
-        print("\n📍 Étape 4: Démarrage de l'enregistrement")
+        # 4. Start recording
+        print("\n📍 Step 4: Starting recording")
         print("-" * 60)
         gopro.record_start()
         
-        # 5. Monitoring du statut en temps réel pendant l'enregistrement
-        print("\n📍 Étape 5: Monitoring en temps réel (10 secondes)")
+        # 5. Real-time status monitoring during recording
+        print("\n📍 Step 5: Real-time monitoring (10 seconds)")
         print("-" * 60)
-        print("💡 Le statut sera affiché toutes les 2 secondes")
+        print("💡 Status will be displayed every 2 seconds")
         gopro.get_status_realtime(interval=2.0, duration=10.0)
         
-        # 6. Arrêt de l'enregistrement
-        print("\n📍 Étape 6: Arrêt de l'enregistrement")
+        # 6. Stop recording
+        print("\n📍 Step 6: Stopping recording")
         print("-" * 60)
         gopro.record_stop()
         time.sleep(2)
         
-        # 7. Téléchargement du dernier média (optionnel)
-        print("\n📍 Étape 7: Téléchargement du dernier média")
+        # 7. Download last media (optional)
+        print("\n📍 Step 7: Download last media")
         print("-" * 60)
-        download = input("Voulez-vous télécharger le dernier média? (o/n): ")
-        if download.lower() == 'o':
-            gopro.download_last_media("dernier_enregistrement")
+        download = input("Do you want to download the last media? (y/n): ")
+        if download.lower() == 'y':
+            gopro.download_last_media("last_recording")
         
         # 8. POWER OFF
         print("\n📍 Step 8: Powering off the camera")
