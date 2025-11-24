@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "goprocontrol"
+version = "0.1.0"
+description = "Contrôle USB pour caméras GoPro"
+authors = ["Ramdam17 <remy.ramadour.labs@gmail.com>"]
+readme = "README.md"
+packages = [{include = "gopro_usb.py"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.31.0"
+opencv-python = "^4.8.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+black = "^23.0.0"
+ruff = "^0.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
