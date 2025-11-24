@@ -116,8 +116,17 @@ Assurez-vous que :
 
 ## Crédits
 
-Inspiré du projet [goproUSB](https://github.com/username/goproUSB) par Lukasz J. Nowak.
+Basé sur le projet [goproUSB](https://github.com/drukasz/goproUSB) par Lukasz J. Nowak.
+
+Modifications et ajouts :
+- Refactorisation complète en classe Python
+- Support OpenCV pour preview local
+- Configuration pour GoPro Hero 12 Black
+- Ajout du monitoring en temps réel
+- Support du téléchargement de médias
 
 ## License
 
-GNU General Public License v3.0
+Ce projet est sous licence **GNU General Public License v3.0** - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+Comme dérivé de [goproUSB](https://github.com/drukasz/goproUSB), ce projet respecte les termes de la GPL v3.0 qui requiert que toute modification ou travail dérivé soit également distribué sous GPL v3.0.
