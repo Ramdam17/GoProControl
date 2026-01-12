@@ -9,7 +9,7 @@ import time
 SN1 = "C3504224696431"
 SN2 = "C3504224677229"
 SN3 = "C3504224682139"
-SN = SN3
+SN = SN2
 
 
 def main():
